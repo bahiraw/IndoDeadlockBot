@@ -1,0 +1,25 @@
+{
+  "name": "discord-v2-dispatcher-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "bot",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,bot,web -c cyan,yellow,magenta \"npm run dev -w server\" \"npm run dev -w bot\" \"npm run dev -w web\"",
+    "dev:all": "concurrently -n server,bot,web -c cyan,yellow,magenta \"npm run dev -w server\" \"npm run dev -w bot\" \"npm run dev -w web\"",
+    "dev:server": "npm run dev -w server",
+    "dev:bot": "npm run dev -w bot",
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build -w shared && npm run build -w bot && npm run build -w server && npm run build -w web",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w bot && npm run typecheck -w server && npm run typecheck -w web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}
